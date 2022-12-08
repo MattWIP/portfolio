@@ -56,7 +56,7 @@ const Navigation: FunctionComponent = () => {
             <MenuToggle
               toggle={() => {
                 toggleOpen();
-                toggleNavigationOpen();
+                toggleNavigationOpen && toggleNavigationOpen();
               }}
             />
         </motion.nav>
