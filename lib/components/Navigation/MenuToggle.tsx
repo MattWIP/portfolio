@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useContext } from "react";
 import { motion } from 'framer-motion'
 
 type ToggleProps = {
@@ -24,6 +24,7 @@ const Path: FunctionComponent<PathProps> = (props: any) => (
 const MenuToggle: FunctionComponent<ToggleProps> = ({
     toggle
 }) => {
+
     return (
         <button
           onClick={toggle}

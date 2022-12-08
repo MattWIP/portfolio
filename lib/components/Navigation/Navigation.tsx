@@ -1,4 +1,4 @@
-import { FunctionComponent, useRef } from "react"
+import { FunctionComponent, useRef, useContext } from "react"
 import { motion, useCycle } from 'framer-motion'
 
 // Components
@@ -6,6 +6,9 @@ import Menu from "./Menu";
 import MenuToggle from "./MenuToggle";
 
 // Lib
+import {
+  SiteContext
+} from '../../Context';
 import { useDimensions } from "../../hooks";
 
 const sidebarVariants = {
@@ -35,6 +38,7 @@ const Navigation: FunctionComponent = () => {
     const [isOpen, toggleOpen] = useCycle(false, true);
     const containerRef = useRef(null);
     const { height } = useDimensions(containerRef); 
+    const { toggleNavigationOpen } = useContext(SiteContext);
 
     return (
         <motion.nav
@@ -42,15 +46,18 @@ const Navigation: FunctionComponent = () => {
           animate={isOpen ? 'open' : 'closed'}
           custom={height}
           ref={containerRef}
-          className="absolute top-0 left-0 bottom-0 w-[300px]"
+          className="z-10 absolute top-0 left-0 bottom-0 w-[300px]"
         >
             <motion.div
               variants={sidebarVariants}
-              className="absolute top-0 left-0 bottom-0 w-[300px] bg-white"
+              className=" absolute top-0 left-0 h-[300px] lg:h-auto lg:bottom-0 w-screen bg-[#F8E5EE]"
             />
             <Menu />
             <MenuToggle
-              toggle={() => toggleOpen()}
+              toggle={() => {
+                toggleOpen();
+                toggleNavigationOpen();
+              }}
             />
         </motion.nav>
     )

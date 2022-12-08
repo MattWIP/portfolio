@@ -2,8 +2,9 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Router from "next/router"
 import { AnimatePresence } from 'framer-motion'
-
 import { useState, useEffect } from 'react'
+
+import { SiteProvider } from '../lib/Context'
 
 export default function App({ Component, pageProps, router }: AppProps) {
   const [loading, setLoading] = useState(false);
@@ -28,12 +29,14 @@ export default function App({ Component, pageProps, router }: AppProps) {
 
 
   return (
-    <AnimatePresence
-      mode="wait"
-      initial={false}
-      onExitComplete={() => window.scrollTo(0, 0)}
-    >
-      <Component {...pageProps} key={router.pathname} />
-    </AnimatePresence>
+    <SiteProvider>
+      <AnimatePresence
+        mode="wait"
+        initial={false}
+        onExitComplete={() => window.scrollTo(0, 0)}
+      >
+        <Component {...pageProps} key={router.pathname} />
+      </AnimatePresence>
+    </SiteProvider>
   )
 }
