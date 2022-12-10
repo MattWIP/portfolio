@@ -26,6 +26,6 @@ a {
   }
   body {
     color: white;
-    @apply bg-[#032B43] bg-opacity-80;
+    @apply bg-black bg-opacity-80;
   }
 }
