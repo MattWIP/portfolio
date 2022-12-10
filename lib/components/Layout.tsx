@@ -12,7 +12,7 @@ import { ChildrenProps } from '../types'
 const Layout: FunctionComponent<ChildrenProps> = ({ children }) => {
     return (
         <>
-            <Navigation />
+            {/* <Navigation /> */}
             <motion.div
                 initial={{ x: 300, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
