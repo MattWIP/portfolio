@@ -30,3 +30,13 @@ export default function Home() {
     </Layout>
   );
 }
+
+export async function getStaticProps() {
+  return {
+    props: {
+      data: [], // Pass the fetched data to your page as props
+    },
+    // Revalidate the page every hour (3600 seconds)
+    revalidate: 3600,
+  };
+}
